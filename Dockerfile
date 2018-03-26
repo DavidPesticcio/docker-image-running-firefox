@@ -1,8 +1,8 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 #RUN apt-get update && apt-get install -y software-properties-common python-software-properties && add-apt-repository ppa:mozillateam/ppa && apt-get install -y firefox-esr && apt-get install -y sudo && apt-get install -y libcanberra-gtk3-module && apt-get install -y icedtea-plugin
 
-RUN apt-get update && apt-get install -y software-properties-common python-software-properties && sudo apt-get install -y firefox && apt-get install -y sudo && apt-get install -y libcanberra-gtk3-module && apt-get install -y icedtea-plugin
+RUN apt-get update && apt-get install -y software-properties-common python-software-properties && apt-get install -y firefox && apt-get install -y sudo && apt-get install -y libcanberra-gtk3-module && apt-get install -y icedtea-8-plugin
 
 
 
@@ -18,6 +18,7 @@ RUN export uid=1000 gid=50 && \
 ADD ./example.jnlp /tmp/example.jnlp
 
 RUN chmod 0777 /tmp/example.jnlp
+RUN sed -i 's/\(^jdk.jar.disabledAlgorithms.*\)\(MD5,\)/\1 /' /etc/java-8-openjdk/security/java.security
 
 USER developer
 ENV HOME /home/developer
