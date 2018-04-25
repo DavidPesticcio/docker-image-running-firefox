@@ -15,9 +15,9 @@ RUN export uid=1000 gid=50 && \
     chmod 0440 /etc/sudoers.d/developer && \
     chown ${uid}:${gid} -R /home/developer
 
-ADD ./example.jnlp /tmp/example.jnlp
+#ADD ./example.jnlp /tmp/example.jnlp
+#RUN chmod 0777 /tmp/example.jnlp
 
-RUN chmod 0777 /tmp/example.jnlp
 RUN sed -i 's/\(^jdk.jar.disabledAlgorithms.*\)\(MD5,\)/\1 /' /etc/java-8-openjdk/security/java.security
 
 USER developer
