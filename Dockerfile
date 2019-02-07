@@ -2,7 +2,14 @@ FROM ubuntu:16.04
 
 #RUN apt-get update && apt-get install -y software-properties-common python-software-properties && add-apt-repository ppa:mozillateam/ppa && apt-get install -y firefox-esr && apt-get install -y sudo && apt-get install -y libcanberra-gtk3-module && apt-get install -y icedtea-plugin
 
-RUN apt-get update && apt-get install -y software-properties-common python-software-properties && apt-get install -y firefox && apt-get install -y sudo && apt-get install -y libcanberra-gtk3-module && apt-get install -y icedtea-8-plugin
+RUN apt-get update \
+    && apt-get install -y \
+               software-properties-common \
+               python-software-properties \
+    && apt-get install -y firefox \
+    && apt-get install -y sudo \
+    && apt-get install -y libcanberra-gtk3-module \
+    && apt-get install -y icedtea-8-plugin
 
 RUN apt-get install -y vim-tiny
 
